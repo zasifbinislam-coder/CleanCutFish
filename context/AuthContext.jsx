@@ -153,9 +153,16 @@ export function AuthProvider({ children }) {
         status: "received",
         lines: order.lines,
       };
-      const { data, error } = await supabase.from("orders").insert(row).select().single();
+      // Plain INSERT — no .select(). Anon checkout has no SELECT policy on
+      // orders (intentional: guests can't read orders), so RETURNING would
+      // fail with an RLS error. We build the record locally from the row we
+      // sent, since the DB stores it as-is.
+      const { error } = await supabase.from("orders").insert(row);
       if (error) throw error;
-      const record = rowToOrder(data);
+      const record = rowToOrder({
+        ...row,
+        created_at: new Date().toISOString(),
+      });
       setOrders((curr) => [record, ...curr]);
       return record;
     },

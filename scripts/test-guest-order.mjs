@@ -11,7 +11,8 @@ const supa = createClient(url, anon, { auth: { persistSession: false } });
 
 const id = "CCF-TEST" + Math.random().toString(36).slice(2, 5).toUpperCase();
 
-const { data, error } = await supa.from("orders").insert({
+// NOTE: no .select() here — anon has no SELECT policy on orders, so RETURNING fails.
+const { error } = await supa.from("orders").insert({
   id,
   user_id: null,
   user_email: "guest-test@example.com",
@@ -26,7 +27,7 @@ const { data, error } = await supa.from("orders").insert({
   delivery: 80,
   total: 420,
   lines: [{ productId: "pabda-haor", name: "Haorer Pabda", qty: 1, unitPrice: 340, weightLabel: "500 g" }],
-}).select().single();
+});
 
 if (error) {
   console.error("✖ Insert blocked:", error.message);
@@ -35,7 +36,7 @@ if (error) {
   process.exit(1);
 }
 
-console.log("✓ Guest order inserted as", data.id);
+console.log("✓ Guest order inserted as", id);
 
 // Cleanup the test row
 await supa.from("orders").delete().eq("id", id);
