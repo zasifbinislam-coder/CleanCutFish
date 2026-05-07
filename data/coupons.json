@@ -1,0 +1,30 @@
+[
+  {
+    "code": "FRESH10",
+    "type": "percent",
+    "value": 10,
+    "minSubtotal": 0,
+    "description": "10% off your order — for everyone."
+  },
+  {
+    "code": "FAMILY150",
+    "type": "flat",
+    "value": 150,
+    "minSubtotal": 1500,
+    "description": "৳150 off when you spend ৳1,500+."
+  },
+  {
+    "code": "NEWUSER15",
+    "type": "percent",
+    "value": 15,
+    "minSubtotal": 0,
+    "description": "15% off your first order. Welcome to CleanCutFish!"
+  },
+  {
+    "code": "ILISH200",
+    "type": "flat",
+    "value": 200,
+    "minSubtotal": 2000,
+    "description": "৳200 off premium river-fish orders ৳2,000+."
+  }
+]

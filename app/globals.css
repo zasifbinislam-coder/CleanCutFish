@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-brand-cream text-brand-deep antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+  /* Functional, riverfish-style headings — only h1/h2 use display font sparingly */
+  h1, h2 { @apply font-display tracking-tight; }
+  h3, h4 { @apply font-sans tracking-tight font-semibold; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 font-medium transition
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal/60;
+  }
+  .btn-primary {
+    @apply btn bg-accent-coral text-white hover:bg-accent-deep active:scale-[0.98] shadow-soft;
+  }
+  .btn-ghost {
+    @apply btn bg-white/80 text-brand-deep border border-brand-deep/15 hover:bg-white;
+  }
+  .btn-accent {
+    @apply btn bg-brand-deep text-white hover:bg-brand-ocean shadow-soft;
+  }
+  .btn-teal {
+    @apply btn bg-brand-teal text-white hover:bg-brand-deep shadow-soft;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1 rounded-full bg-brand-mint/15 text-brand-teal
+           text-xs font-semibold px-2.5 py-1;
+  }
+  .card {
+    @apply rounded-2xl bg-white shadow-card border border-brand-deep/5;
+  }
+  .container-page {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .input {
+    @apply w-full rounded-xl border border-brand-deep/15 bg-white px-3 py-2 text-sm
+           focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20;
+  }
+  .section-title {
+    @apply font-display text-3xl sm:text-4xl text-brand-deep;
+  }
+  .section-eyebrow {
+    @apply text-xs uppercase tracking-[0.18em] text-brand-teal font-semibold;
+  }
+}
+
+/* subtle animated wave underline */
+.wave-underline {
+  background-image: linear-gradient(transparent calc(100% - 4px), rgba(15,139,141,.45) 0);
+  background-size: 100% 100%;
+}

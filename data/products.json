@@ -1,0 +1,361 @@
+[
+  {
+    "id": "dhanu-ayre",
+    "name": "Dhonu Nodir Ayre",
+    "nameBn": "ধনু নদীর আইড়",
+    "category": "large-river",
+    "categoryLabel": "Large River Fish",
+    "region": "Kishoreganj",
+    "river": "Dhonu River",
+    "pricePerKg": 1550,
+    "weights": [
+      { "label": "1 kg", "kg": 1, "multiplier": 1 },
+      { "label": "1.5 kg", "kg": 1.5, "multiplier": 1.5 },
+      { "label": "2 kg", "kg": 2, "multiplier": 2 }
+    ],
+    "image": "/photofish/River_Ayer_1kg.jpg",
+    "gallery": [
+      "/photofish/River_Ayer_1kg.jpg"
+    ],
+    "tags": ["ready-to-cook", "premium", "river"],
+    "shortDescription": "Sweet-water Ayre caught from the Dhonu river, hand-cleaned and vacuum sealed.",
+    "description": "Our Ayre (আইড়) is sourced fresh every morning from the Dhonu river in Kishoreganj — known for the cleanest sweet-water catch in Bangladesh. Each fish is processed within hours: scaled, gutted, head-and-tail trimmed if requested, cut into kitchen-ready 4 finger-thick pieces, washed in chilled brine, and vacuum sealed in food-grade pouches. Zero formalin. Zero artificial color. Delivered on ice.",
+    "stock": 18,
+    "rating": 4.9,
+    "reviews": 142,
+    "readyToCook": true
+  },
+  {
+    "id": "padma-ilish",
+    "name": "Padmar Ilish",
+    "nameBn": "পদ্মার ইলিশ",
+    "category": "large-river",
+    "categoryLabel": "Large River Fish",
+    "region": "Chandpur",
+    "river": "Padma River",
+    "pricePerKg": 1850,
+    "weights": [
+      { "label": "700–800 g", "kg": 0.75, "multiplier": 0.75 },
+      { "label": "1 kg", "kg": 1, "multiplier": 1 },
+      { "label": "1.2 kg+", "kg": 1.2, "multiplier": 1.2 }
+    ],
+    "image": "/photofish/Bler_Pabda.jpg",
+    "gallery": [
+      "/photofish/Bler_Pabda.jpg"
+    ],
+    "tags": ["bestseller", "premium", "river"],
+    "shortDescription": "Iconic silver Ilish from Chandpur — buttery, fragrant, unmistakably Padma.",
+    "description": "The legendary Padma Ilish, sourced from the Chandpur ghats during the right tide. We accept only firm, bright-eyed fish with a clean silver sheen. Each fish is cleaned with care to preserve the delicate fat, scaled or kept whole as you choose, cut into 6 pieces, lightly rinsed, and vacuum packed cold. No chemicals. No freezer storage longer than 12 hours.",
+    "stock": 22,
+    "rating": 5,
+    "reviews": 318,
+    "readyToCook": true
+  },
+  {
+    "id": "sundarban-tilapia",
+    "name": "Sundarban Coastal Tilapia",
+    "nameBn": "সুন্দরবন কোস্টাল তেলাপিয়া",
+    "category": "sea",
+    "categoryLabel": "Sea Fish",
+    "region": "Khulna",
+    "river": "Sundarban estuary",
+    "pricePerKg": 380,
+    "weights": [
+      { "label": "500 g", "kg": 0.5, "multiplier": 0.5 },
+      { "label": "1 kg", "kg": 1, "multiplier": 1 },
+      { "label": "2 kg", "kg": 2, "multiplier": 2 }
+    ],
+    "image": "/photofish/pachmishali.jpg",
+    "gallery": [
+      "/photofish/pachmishali.jpg"
+    ],
+    "tags": ["budget-friendly", "sea"],
+    "shortDescription": "Wild coastal tilapia from the Sundarban estuary — firmer flesh than farmed.",
+    "description": "These tilapia are caught in the brackish waters bordering the Sundarbans, giving them firmer flesh and a cleaner taste than farmed varieties. Scaled, gutted, gilled, and cut into 4 pieces, washed in chilled brine, and vacuum packed. Ideal for everyday curry or fry.",
+    "stock": 60,
+    "rating": 4.6,
+    "reviews": 89,
+    "readyToCook": true
+  },
+  {
+    "id": "boal-ready",
+    "name": "Boal (Ready to Cook)",
+    "nameBn": "বোয়াল মাছ",
+    "category": "large-river",
+    "categoryLabel": "Large River Fish",
+    "region": "Sylhet Haor",
+    "river": "Tanguar Haor",
+    "pricePerKg": 720,
+    "weights": [
+      { "label": "1 kg", "kg": 1, "multiplier": 1 },
+      { "label": "2 kg", "kg": 2, "multiplier": 2 },
+      { "label": "3 kg", "kg": 3, "multiplier": 3 }
+    ],
+    "image": "/photofish/626312222_1331529432354886_1222199326027272664_n_ccdb9341-6e2e-43b1-9a7a-5b88b3f5b74b.jpg",
+    "gallery": [
+      "/photofish/626312222_1331529432354886_1222199326027272664_n_ccdb9341-6e2e-43b1-9a7a-5b88b3f5b74b.jpg"
+    ],
+    "tags": ["ready-to-cook", "haor"],
+    "shortDescription": "Tanguar Haor Boal — boneless steaks, ready for a fiery shorshe curry.",
+    "description": "Boal sourced fresh from Tanguar Haor in Sylhet. We skin, gut, trim, and slice into thick kitchen-ready steaks — the way professional kitchens prep them. Vacuum sealed within 4 hours of catch. Almost no domestic prep needed; open the pouch, marinate, cook.",
+    "stock": 14,
+    "rating": 4.8,
+    "reviews": 76,
+    "readyToCook": true
+  },
+  {
+    "id": "nodir-katol",
+    "name": "Nodir Katol",
+    "nameBn": "নদীর কাতল",
+    "category": "large-river",
+    "categoryLabel": "Large River Fish",
+    "region": "Kishoreganj",
+    "river": "Meghna / Dhonu",
+    "pricePerKg": 580,
+    "weights": [
+      { "label": "1 kg", "kg": 1, "multiplier": 1 },
+      { "label": "2 kg", "kg": 2, "multiplier": 2 },
+      { "label": "3 kg+", "kg": 3, "multiplier": 3 }
+    ],
+    "image": "/photofish/nodir-katol.jpg",
+    "gallery": [
+      "/photofish/nodir-katol.jpg"
+    ],
+    "tags": ["bestseller", "everyday", "river"],
+    "shortDescription": "River-caught Katol — bigger head, richer broth. The kalia classic.",
+    "description": "Wild Katol from confluence rivers in Kishoreganj. Larger head and richer fat than farmed varieties — ideal for kalia and biryani. Scaled, gutted, head split into two, body cut into 8–10 even pieces. Each pouch individually vacuum sealed for portion freezing.",
+    "stock": 24,
+    "rating": 4.8,
+    "reviews": 156,
+    "readyToCook": true
+  },
+  {
+    "id": "chitol-ready",
+    "name": "Chitol (Ready to Cook)",
+    "nameBn": "চিতল মাছ",
+    "category": "large-river",
+    "categoryLabel": "Large River Fish",
+    "region": "Brahmanbaria",
+    "river": "Meghna River",
+    "pricePerKg": 950,
+    "weights": [
+      { "label": "1 kg", "kg": 1, "multiplier": 1 },
+      { "label": "1.5 kg", "kg": 1.5, "multiplier": 1.5 },
+      { "label": "2 kg+", "kg": 2, "multiplier": 2 }
+    ],
+    "image": "/photofish/haorer-deshi-tengra.jpg",
+    "gallery": [
+      "/photofish/haorer-deshi-tengra.jpg"
+    ],
+    "tags": ["ready-to-cook", "premium"],
+    "shortDescription": "Meghna Chitol — perfect for muithya or pan-fry, deboned belly cuts.",
+    "description": "The crown of Meghna river fish. We carefully separate the belly cuts (peti) from the back (gada) and label each pouch so you know what to do with which. Scaled, washed, and vacuum sealed. The signature fish for muithya, kalia, and pan-fry.",
+    "stock": 9,
+    "rating": 4.9,
+    "reviews": 54,
+    "readyToCook": true
+  },
+  {
+    "id": "shol-ready",
+    "name": "Shol (Ready to Cook)",
+    "nameBn": "শোল মাছ",
+    "category": "large-river",
+    "categoryLabel": "Large River Fish",
+    "region": "Mymensingh",
+    "river": "Old Brahmaputra",
+    "pricePerKg": 620,
+    "weights": [
+      { "label": "500 g", "kg": 0.5, "multiplier": 0.5 },
+      { "label": "1 kg", "kg": 1, "multiplier": 1 },
+      { "label": "2 kg", "kg": 2, "multiplier": 2 }
+    ],
+    "image": "/photofish/Modhu_Tengra_n.jpg",
+    "gallery": [
+      "/photofish/Modhu_Tengra_n.jpg"
+    ],
+    "tags": ["ready-to-cook", "everyday"],
+    "shortDescription": "Brahmaputra Shol, ideal for shorshe-bata curry. Cleaned, deboned in parts.",
+    "description": "Shol from Old Brahmaputra in Mymensingh. Skin removed where requested, slimy layer thoroughly cleaned in chilled water, then sliced into 1.5-inch pieces. Vacuum packed. The classic everyday curry fish, made dinner-ready.",
+    "stock": 26,
+    "rating": 4.7,
+    "reviews": 98,
+    "readyToCook": true
+  },
+  {
+    "id": "river-rui",
+    "name": "Nodir Rui",
+    "nameBn": "নদীর রুই",
+    "category": "large-river",
+    "categoryLabel": "Large River Fish",
+    "region": "Kishoreganj",
+    "river": "Meghna / Dhonu",
+    "pricePerKg": 560,
+    "weights": [
+      { "label": "1 kg", "kg": 1, "multiplier": 1 },
+      { "label": "2 kg", "kg": 2, "multiplier": 2 },
+      { "label": "3 kg+", "kg": 3, "multiplier": 3 }
+    ],
+    "image": "/photofish/meghna-nodir-rui-.jpg",
+    "gallery": [
+      "/photofish/meghna-nodir-rui-.jpg"
+    ],
+    "tags": ["bestseller", "everyday", "river"],
+    "shortDescription": "Wild Rui from the Meghna belt. The Sunday-lunch fish, done right.",
+    "description": "Hand-caught Rui from confluence rivers around Kishoreganj. Scaled, gutted, head split, cut into 8–10 pieces depending on size. Each pouch is individually vacuum sealed for exact-portion freezing.",
+    "stock": 30,
+    "rating": 4.8,
+    "reviews": 211,
+    "readyToCook": true
+  },
+  {
+    "id": "modhu-tengra",
+    "name": "Modhu Tengra",
+    "nameBn": "মধু টেংরা",
+    "category": "small",
+    "categoryLabel": "Small Fish",
+    "region": "Kishoreganj",
+    "river": "Dhonu River",
+    "pricePerKg": 900,
+    "weights": [
+      { "label": "300 g", "kg": 0.3, "multiplier": 0.3 },
+      { "label": "500 g", "kg": 0.5, "multiplier": 0.5 },
+      { "label": "1 kg", "kg": 1, "multiplier": 1 }
+    ],
+    "image": "/photofish/Modhu_Tengra.jpg",
+    "gallery": [
+      "/photofish/Modhu_Tengra.jpg"
+    ],
+    "tags": ["small-fish", "river", "delicate"],
+    "shortDescription": "Tiny river Tengra, sweet and delicate — best in light tomato curry.",
+    "description": "Hand-picked Modhu Tengra from the Dhonu. We gut and clean each fish individually — this is patient, slow work — then chill-rinse and vacuum pack. A small-batch product. Limited daily quantity.",
+    "stock": 12,
+    "rating": 4.9,
+    "reviews": 67,
+    "readyToCook": true
+  },
+  {
+    "id": "pabda-haor",
+    "name": "Haorer Pabda",
+    "nameBn": "হাওরের পাবদা",
+    "category": "small",
+    "categoryLabel": "Small Fish",
+    "region": "Sunamganj",
+    "river": "Tanguar Haor",
+    "pricePerKg": 680,
+    "weights": [
+      { "label": "500 g", "kg": 0.5, "multiplier": 0.5 },
+      { "label": "1 kg", "kg": 1, "multiplier": 1 }
+    ],
+    "image": "/photofish/Bler_Pabda.jpg",
+    "gallery": [
+      "/photofish/Bler_Pabda.jpg"
+    ],
+    "tags": ["small-fish", "haor"],
+    "shortDescription": "Bright-eyed Pabda from Tanguar Haor, 15–18 pieces per kg.",
+    "description": "Wild Pabda caught in Tanguar Haor. Scaled, gutted, gill-cleaned. We do NOT cut Pabda into pieces — they are best whole. Chilled brine wash, vacuum packed.",
+    "stock": 20,
+    "rating": 4.7,
+    "reviews": 73,
+    "readyToCook": true
+  },
+  {
+    "id": "golda-chingri",
+    "name": "Golda Chingri (20–25 pcs/kg)",
+    "nameBn": "গলদা চিংড়ি",
+    "category": "shrimp",
+    "categoryLabel": "Shrimp",
+    "region": "Bagerhat",
+    "river": "Sundarban region",
+    "pricePerKg": 1680,
+    "weights": [
+      { "label": "500 g", "kg": 0.5, "multiplier": 0.5 },
+      { "label": "1 kg", "kg": 1, "multiplier": 1 }
+    ],
+    "image": "/photofish/bagda-1.jpg",
+    "gallery": [
+      "/photofish/bagda-1.jpg"
+    ],
+    "tags": ["shrimp", "premium"],
+    "shortDescription": "Big-headed Golda — the showstopper for malai curry and biryani.",
+    "description": "Sweet-water Golda from Bagerhat. We keep them head-on, devein the back, and trim the long antennae. Chilled brine, vacuum sealed. 20–25 pieces per kg means big restaurant-grade prawns.",
+    "stock": 16,
+    "rating": 5,
+    "reviews": 124,
+    "readyToCook": true
+  },
+  {
+    "id": "bagda-chingri",
+    "name": "Bagda Chingri",
+    "nameBn": "বাগদা চিংড়ি",
+    "category": "shrimp",
+    "categoryLabel": "Shrimp",
+    "region": "Khulna",
+    "river": "Coastal farms",
+    "pricePerKg": 600,
+    "weights": [
+      { "label": "500 g", "kg": 0.5, "multiplier": 0.5 },
+      { "label": "1 kg", "kg": 1, "multiplier": 1 }
+    ],
+    "image": "/photofish/bagda-chingri.jpg",
+    "gallery": [
+      "/photofish/bagda-chingri.jpg"
+    ],
+    "tags": ["shrimp", "everyday"],
+    "shortDescription": "Mid-size Bagda — the everyday shrimp for chingri-malai or fried rice.",
+    "description": "Coastal Bagda chingri, head-on or peeled (your choice). Deveined, washed, and vacuum sealed in 250g sub-portions inside the main pouch — so you can defrost only what you need.",
+    "stock": 40,
+    "rating": 4.6,
+    "reviews": 91,
+    "readyToCook": true
+  },
+  {
+    "id": "puti-shutki",
+    "name": "Puti Shutki",
+    "nameBn": "পুটি শুটকি",
+    "category": "shutki",
+    "categoryLabel": "Dry Fish (Shutki)",
+    "region": "Kishoreganj",
+    "river": "Sun-dried, traditional",
+    "pricePerKg": 1500,
+    "weights": [
+      { "label": "250 g", "kg": 0.25, "multiplier": 0.25 },
+      { "label": "500 g", "kg": 0.5, "multiplier": 0.5 }
+    ],
+    "image": "/photofish/Modhu_Tengra.jpg",
+    "gallery": [
+      "/photofish/Modhu_Tengra.jpg"
+    ],
+    "tags": ["shutki", "traditional"],
+    "shortDescription": "Sun-dried Puti shutki — bold, smoky, classic bhuna or shorshe curry.",
+    "description": "Traditional sun-dried Puti from Kishoreganj. No chemicals, no insecticides — just sun, salt, and time. Hand-sorted, dust-cleaned, lightly toasted, and vacuum packed for long shelf life.",
+    "stock": 32,
+    "rating": 4.8,
+    "reviews": 58,
+    "readyToCook": false
+  },
+  {
+    "id": "loitya-shutki",
+    "name": "Loitya Shutki",
+    "nameBn": "লইট্যা শুটকি",
+    "category": "shutki",
+    "categoryLabel": "Dry Fish (Shutki)",
+    "region": "Cox's Bazar",
+    "river": "Sun-dried, coastal",
+    "pricePerKg": 1400,
+    "weights": [
+      { "label": "250 g", "kg": 0.25, "multiplier": 0.25 },
+      { "label": "500 g", "kg": 0.5, "multiplier": 0.5 }
+    ],
+    "image": "/photofish/bagda-2.jpg",
+    "gallery": [
+      "/photofish/bagda-2.jpg"
+    ],
+    "tags": ["shutki", "coastal"],
+    "shortDescription": "Coastal Loitya shutki from Cox's Bazar — chemical-free, sun-cured.",
+    "description": "Loitya (Bombay duck) from Cox's Bazar coast, traditionally sun-dried on bamboo racks. Insect-free, hand-sorted, no preservatives. Vacuum packed in food-grade pouches.",
+    "stock": 18,
+    "rating": 4.7,
+    "reviews": 41,
+    "readyToCook": false
+  }
+]

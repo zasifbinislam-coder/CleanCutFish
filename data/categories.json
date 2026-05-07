@@ -1,0 +1,37 @@
+[
+  {
+    "id": "small",
+    "name": "Small Fish",
+    "nameBn": "ছোট মাছ",
+    "image": "/photofish/Modhu_Tengra.jpg",
+    "blurb": "Tengra, Pabda, Puti — delicate and sweet."
+  },
+  {
+    "id": "large-river",
+    "name": "Large River Fish",
+    "nameBn": "নদীর বড় মাছ",
+    "image": "/photofish/meghna-nodir-rui-.jpg",
+    "blurb": "Ilish, Ayre, Boal, Rui — direct from rivers."
+  },
+  {
+    "id": "sea",
+    "name": "Sea Fish",
+    "nameBn": "সামুদ্রিক মাছ",
+    "image": "/photofish/Bler_Pabda.jpg",
+    "blurb": "Wild coastal catch from the Bay of Bengal."
+  },
+  {
+    "id": "shrimp",
+    "name": "Shrimp",
+    "nameBn": "চিংড়ি",
+    "image": "/photofish/bagda-chingri.jpg",
+    "blurb": "Golda and Bagda — head-on, deveined."
+  },
+  {
+    "id": "shutki",
+    "name": "Dry Fish (Shutki)",
+    "nameBn": "শুটকি",
+    "image": "/photofish/Modhu_Tengra.jpg",
+    "blurb": "Traditional sun-dried — no chemicals."
+  }
+]

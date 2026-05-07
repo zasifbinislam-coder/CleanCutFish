@@ -1,0 +1,47 @@
+[
+  {
+    "id": "family-classic",
+    "name": "Family Classic Combo",
+    "nameBn": "ফ্যামিলি ক্লাসিক প্যাক",
+    "tagline": "Rui + Katol + Chingri — a week of dinners.",
+    "items": [
+      { "productId": "river-rui", "weight": "1 kg" },
+      { "productId": "nodir-katol", "weight": "1 kg" },
+      { "productId": "bagda-chingri", "weight": "500 g" }
+    ],
+    "originalPrice": 1740,
+    "comboPrice": 1499,
+    "image": "/photofish/nodir-katol.jpg",
+    "serves": "4–6 people, 5–6 meals"
+  },
+  {
+    "id": "premium-river",
+    "name": "Premium River Pack",
+    "nameBn": "প্রিমিয়াম নদীর প্যাক",
+    "tagline": "Padma Ilish + Dhonu Ayre + Meghna Chitol.",
+    "items": [
+      { "productId": "padma-ilish", "weight": "1 kg" },
+      { "productId": "dhanu-ayre", "weight": "1 kg" },
+      { "productId": "chitol-ready", "weight": "1 kg" }
+    ],
+    "originalPrice": 4350,
+    "comboPrice": 3899,
+    "image": "/photofish/River_Ayer_1kg.jpg",
+    "serves": "6–8 people, special occasion"
+  },
+  {
+    "id": "bachelor-easy",
+    "name": "Bachelor Easy Pack",
+    "nameBn": "ব্যাচেলর প্যাক",
+    "tagline": "Tilapia + Bagda + Pabda — small, simple, ready.",
+    "items": [
+      { "productId": "sundarban-tilapia", "weight": "500 g" },
+      { "productId": "bagda-chingri", "weight": "500 g" },
+      { "productId": "pabda-haor", "weight": "500 g" }
+    ],
+    "originalPrice": 830,
+    "comboPrice": 749,
+    "image": "/photofish/Bler_Pabda.jpg",
+    "serves": "1–2 people, ~5 meals"
+  }
+]
