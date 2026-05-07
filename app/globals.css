@@ -10,6 +10,33 @@
   /* Functional, riverfish-style headings — only h1/h2 use display font sparingly */
   h1, h2 { @apply font-display tracking-tight; }
   h3, h4 { @apply font-sans tracking-tight font-semibold; }
+
+  /* ----- Bengali font overrides --------------------------------------------
+     When the document language is Bangla, swap to fonts designed for proper
+     Bengali rendering. Hind Siliguri (clean modern sans) for body + UI,
+     Noto Serif Bengali (warm display serif) for h1/h2 headlines.
+     ------------------------------------------------------------------------- */
+  html[lang="bn"], html[lang="bn"] body,
+  html[lang="bn"] input, html[lang="bn"] textarea, html[lang="bn"] select, html[lang="bn"] button {
+    font-family: "Hind Siliguri", "Noto Serif Bengali", system-ui, sans-serif;
+    /* Slightly looser line-height — Bengali ascenders/descenders need more room */
+    line-height: 1.55;
+  }
+  html[lang="bn"] h1,
+  html[lang="bn"] h2,
+  html[lang="bn"] .font-display {
+    font-family: "Noto Serif Bengali", "Hind Siliguri", Georgia, serif;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+  html[lang="bn"] h3, html[lang="bn"] h4 {
+    font-family: "Hind Siliguri", system-ui, sans-serif;
+    line-height: 1.35;
+  }
+  /* Improve numerical rendering — Bengali numerals shouldn't get Latin tabular */
+  html[lang="bn"] {
+    font-variant-numeric: normal;
+  }
 }
 
 @layer components {
