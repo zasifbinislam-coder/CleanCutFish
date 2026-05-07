@@ -50,7 +50,7 @@ export default function AccountPage() {
           </Link>
 
           <button
-            onClick={async () => { await signOut(); router.push("/"); }}
+            onClick={() => { router.replace("/"); signOut(); }}
             className="btn-ghost w-full"
           >
             Sign out
