@@ -6,7 +6,11 @@
 import { createClient } from "@supabase/supabase-js";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import "dotenv/config";
+import { config } from "dotenv";
+
+// Next.js convention: prefer .env.local
+config({ path: ".env.local" });
+config({ path: ".env" });
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
