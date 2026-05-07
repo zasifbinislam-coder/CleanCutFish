@@ -22,10 +22,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "'Hind Siliguri'", "system-ui", "Segoe UI", "Roboto", "sans-serif"],
-        display: ["'Playfair Display'", "'Noto Serif Bengali'", "'Hind Siliguri'", "Georgia", "serif"],
-        bn: ["'Hind Siliguri'", "system-ui", "sans-serif"],
-        bnDisplay: ["'Noto Serif Bengali'", "'Hind Siliguri'", "Georgia", "serif"],
+        sans: ["Inter", "'Baloo Da 2'", "system-ui", "Segoe UI", "Roboto", "sans-serif"],
+        display: ["'Playfair Display'", "'Noto Serif Bengali'", "'Baloo Da 2'", "Georgia", "serif"],
+        bn: ["'Baloo Da 2'", "system-ui", "sans-serif"],
+        bnDisplay: ["'Noto Serif Bengali'", "'Baloo Da 2'", "Georgia", "serif"],
       },
       boxShadow: {
         soft: "0 6px 24px -8px rgba(11, 61, 92, 0.18)",

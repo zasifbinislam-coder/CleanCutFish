@@ -12,30 +12,33 @@
   h3, h4 { @apply font-sans tracking-tight font-semibold; }
 
   /* ----- Bengali font overrides --------------------------------------------
-     When the document language is Bangla, swap to fonts designed for proper
-     Bengali rendering. Hind Siliguri (clean modern sans) for body + UI,
-     Noto Serif Bengali (warm display serif) for h1/h2 headlines.
+     Baloo Da 2 — rounded, friendly, very readable at small sizes (no broken
+     conjuncts or thin numerals). Noto Serif Bengali for display headlines.
      ------------------------------------------------------------------------- */
   html[lang="bn"], html[lang="bn"] body,
   html[lang="bn"] input, html[lang="bn"] textarea, html[lang="bn"] select, html[lang="bn"] button {
-    font-family: "Hind Siliguri", "Noto Serif Bengali", system-ui, sans-serif;
-    /* Slightly looser line-height — Bengali ascenders/descenders need more room */
+    font-family: "Baloo Da 2", system-ui, sans-serif;
     line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   html[lang="bn"] h1,
   html[lang="bn"] h2,
   html[lang="bn"] .font-display {
-    font-family: "Noto Serif Bengali", "Hind Siliguri", Georgia, serif;
+    font-family: "Noto Serif Bengali", "Baloo Da 2", Georgia, serif;
     line-height: 1.25;
     letter-spacing: 0;
   }
   html[lang="bn"] h3, html[lang="bn"] h4 {
-    font-family: "Hind Siliguri", system-ui, sans-serif;
+    font-family: "Baloo Da 2", system-ui, sans-serif;
     line-height: 1.35;
   }
-  /* Improve numerical rendering — Bengali numerals shouldn't get Latin tabular */
-  html[lang="bn"] {
-    font-variant-numeric: normal;
+  /* Tiny text (announcement bar, badges) — slightly bigger + bolder for clarity */
+  html[lang="bn"] .text-\[10px\],
+  html[lang="bn"] .text-\[11px\],
+  html[lang="bn"] .text-xs {
+    font-size: 0.78rem;     /* ~12.5px instead of ~10–12px */
+    font-weight: 500;
   }
 }
 
