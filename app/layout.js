@@ -2,6 +2,7 @@ import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { WishlistProvider } from "@/context/WishlistContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MiniCart from "@/components/MiniCart";
@@ -20,21 +21,23 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Hind+Siliguri:wght@400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap"
           rel="stylesheet"
         />
       </head>
       <body className="font-sans">
-        <AuthProvider>
-          <WishlistProvider>
-            <CartProvider>
-              <Header />
-              <main className="bg-wave-pattern">{children}</main>
-              <MiniCart />
-              <Footer />
-            </CartProvider>
-          </WishlistProvider>
-        </AuthProvider>
+        <LanguageProvider>
+          <AuthProvider>
+            <WishlistProvider>
+              <CartProvider>
+                <Header />
+                <main className="bg-wave-pattern">{children}</main>
+                <MiniCart />
+                <Footer />
+              </CartProvider>
+            </WishlistProvider>
+          </AuthProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

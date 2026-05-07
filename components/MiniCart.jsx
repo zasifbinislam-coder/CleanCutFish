@@ -3,10 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useCart, formatBDT } from "@/context/CartContext";
+import { useLang } from "@/context/LanguageContext";
 import { IconClose, IconMinus, IconPlus } from "@/components/Icon";
 
 export default function MiniCart() {
   const { miniOpen, closeMini, lines, subtotal, updateQty, removeItem } = useCart();
+  const { t } = useLang();
 
   return (
     <>
@@ -25,8 +27,8 @@ export default function MiniCart() {
       >
         <div className="flex items-center justify-between px-5 py-4 border-b border-brand-deep/10">
           <div>
-            <div className="section-eyebrow">Your basket</div>
-            <h3 className="font-display text-2xl">Catch of the day</h3>
+            <div className="section-eyebrow">{t("cart.mini.eyebrow")}</div>
+            <h3 className="font-display text-2xl">{t("cart.mini.title")}</h3>
           </div>
           <button onClick={closeMini} aria-label="Close cart"
             className="p-2 rounded-full hover:bg-brand-deep/5">
@@ -38,9 +40,9 @@ export default function MiniCart() {
           {lines.length === 0 && (
             <div className="text-center py-16">
               <div className="text-5xl mb-3">🐟</div>
-              <p className="text-brand-deep/70">Your basket is empty.</p>
+              <p className="text-brand-deep/70">{t("cart.mini.empty")}</p>
               <Link href="/shop" onClick={closeMini} className="btn-primary mt-5">
-                Browse the catch
+                {t("cart.mini.browse")}
               </Link>
             </div>
           )}
@@ -74,18 +76,18 @@ export default function MiniCart() {
         {lines.length > 0 && (
           <div className="border-t border-brand-deep/10 px-5 py-4 bg-white">
             <div className="flex justify-between text-sm text-brand-deep/70">
-              <span>Subtotal</span>
+              <span>{t("common.subtotal")}</span>
               <span>{formatBDT(subtotal)}</span>
             </div>
             <div className="flex justify-between text-xs text-brand-deep/60 mt-1">
-              <span>Delivery</span>
-              <span>{subtotal >= 1500 ? "Free in Dhaka" : "Calculated at checkout"}</span>
+              <span>{t("common.delivery")}</span>
+              <span>{subtotal >= 1500 ? t("cart.mini.freeInDhaka") : t("cart.mini.calcAtCheckout")}</span>
             </div>
             <Link href="/checkout" onClick={closeMini} className="btn-primary w-full mt-4">
-              Checkout · {formatBDT(subtotal)}
+              {t("cart.mini.checkoutWithTotal")} · {formatBDT(subtotal)}
             </Link>
             <Link href="/cart" onClick={closeMini} className="btn-ghost w-full mt-2">
-              View full basket
+              {t("cart.mini.viewFull")}
             </Link>
           </div>
         )}

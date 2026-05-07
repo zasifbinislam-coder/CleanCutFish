@@ -3,22 +3,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCart, formatBDT } from "@/context/CartContext";
+import { useLang } from "@/context/LanguageContext";
 import { IconClose, IconMinus, IconPlus } from "@/components/Icon";
 
 export default function CartPage() {
   const { lines, subtotal, updateQty, removeItem, clear } = useCart();
+  const { t } = useLang();
   const delivery = subtotal === 0 ? 0 : subtotal >= 1500 ? 0 : 80;
   const total = subtotal + delivery;
 
   return (
     <div className="container-page py-8 lg:py-12">
-      <h1 className="section-title mb-6">Your basket</h1>
+      <h1 className="section-title mb-6">{t("cart.title")}</h1>
 
       {lines.length === 0 ? (
         <div className="card p-12 text-center">
           <div className="text-5xl mb-3">🐟</div>
-          <p className="text-brand-deep/70 mb-6">Your basket is empty.</p>
-          <Link href="/shop" className="btn-primary">Browse the catch</Link>
+          <p className="text-brand-deep/70 mb-6">{t("cart.empty")}</p>
+          <Link href="/shop" className="btn-primary">{t("cart.browse")}</Link>
         </div>
       ) : (
         <div className="grid lg:grid-cols-[1fr_360px] gap-8">
@@ -32,7 +34,7 @@ export default function CartPage() {
                   <div className="font-display text-base sm:text-lg text-brand-deep leading-tight">{l.name}</div>
                   <div className="text-xs text-brand-deep/60">{l.weightLabel} · {l.region}</div>
                   <div className="text-xs sm:text-sm text-brand-deep/70 mt-1">
-                    {formatBDT(l.unitPrice)} <span className="text-brand-deep/55">per pouch</span>
+                    {formatBDT(l.unitPrice)} <span className="text-brand-deep/55">{t("common.perPouch")}</span>
                   </div>
                   <div className="mt-2 flex items-center gap-3">
                     <div className="inline-flex items-center border border-brand-deep/15 rounded-full">
@@ -49,26 +51,30 @@ export default function CartPage() {
               </div>
             ))}
             <button onClick={clear} className="text-sm text-brand-deep/55 hover:text-accent-coral">
-              Clear basket
+              {t("cart.clear")}
             </button>
           </div>
 
           <aside className="card p-6 h-fit lg:sticky lg:top-28">
-            <h3 className="font-display text-2xl mb-4">Summary</h3>
+            <h3 className="font-display text-2xl mb-4">{t("cart.summary")}</h3>
             <div className="space-y-2 text-sm">
-              <Row label="Subtotal" value={formatBDT(subtotal)} />
-              <Row label="Delivery" value={delivery === 0 ? "Free" : formatBDT(delivery)} hint={subtotal < 1500 ? `Add ${formatBDT(1500 - subtotal)} for free Dhaka delivery` : null} />
+              <Row label={t("common.subtotal")} value={formatBDT(subtotal)} />
+              <Row
+                label={t("common.delivery")}
+                value={delivery === 0 ? t("common.free") : formatBDT(delivery)}
+                hint={subtotal < 1500 ? t("cart.addForFree").replace("%s", formatBDT(1500 - subtotal)) : null}
+              />
               <div className="border-t border-brand-deep/10 my-3" />
               <div className="flex justify-between text-lg font-semibold">
-                <span>Total</span>
+                <span>{t("common.total")}</span>
                 <span>{formatBDT(total)}</span>
               </div>
             </div>
             <Link href="/checkout" className="btn-primary w-full mt-5">
-              Proceed to checkout
+              {t("cart.proceedCheckout")}
             </Link>
             <Link href="/shop" className="btn-ghost w-full mt-2">
-              Continue shopping
+              {t("cart.continueShopping")}
             </Link>
           </aside>
         </div>

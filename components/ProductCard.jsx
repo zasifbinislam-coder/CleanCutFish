@@ -4,14 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCart, formatBDT } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
+import { useLang } from "@/context/LanguageContext";
 import { IconStar, IconPin, IconHeart } from "@/components/Icon";
 
 export default function ProductCard({ product }) {
   const { addItem } = useCart();
   const { has, toggle } = useWishlist();
+  const { t, isBn } = useLang();
   const defaultWeight = product.weights[0];
   const inStock = (product.stock ?? 0) > 0;
   const wished = has(product.id);
+  const displayName = isBn && product.nameBn ? product.nameBn : product.name;
+  const altName    = isBn ? product.name : product.nameBn;
 
   function quickAdd(e) {
     e.preventDefault();
@@ -47,14 +51,14 @@ export default function ProductCard({ product }) {
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         {product.tags?.includes("bestseller") && (
-          <span className="absolute top-3 left-3 pill bg-accent-coral/90 text-white">Bestseller</span>
+          <span className="absolute top-3 left-3 pill bg-accent-coral/90 text-white">{t("common.bestseller")}</span>
         )}
         {!inStock && (
-          <span className="absolute top-3 left-3 pill bg-brand-deep/90 text-white">Out of stock</span>
+          <span className="absolute top-3 left-3 pill bg-brand-deep/90 text-white">{t("common.soldOut")}</span>
         )}
         {product.readyToCook && inStock && (
           <span className="absolute top-3 right-3 pill bg-white/90 text-brand-teal">
-            ✓ Ready to Cook
+            {t("common.readyToCook")}
           </span>
         )}
         <button
@@ -79,19 +83,19 @@ export default function ProductCard({ product }) {
           <span className="text-brand-deep/40">({product.reviews})</span>
         </div>
         <h3 className="mt-1 font-display text-lg leading-tight text-brand-deep">
-          {product.name}
+          {displayName}
         </h3>
-        <p className="text-xs text-brand-deep/55">{product.nameBn}</p>
+        {altName && <p className="text-xs text-brand-deep/55">{altName}</p>}
         <p className="mt-2 text-xs text-brand-deep/70 line-clamp-2 flex-1">
           {product.shortDescription}
         </p>
         <div className="mt-3 flex items-end justify-between">
           <div>
             <div className="text-lg font-semibold text-brand-deep">
-              {formatBDT(product.pricePerKg)}<span className="text-xs text-brand-deep/55">/kg</span>
+              {formatBDT(product.pricePerKg)}<span className="text-xs text-brand-deep/55">{t("common.perKg")}</span>
             </div>
             <div className="text-[11px] text-brand-deep/55">
-              from {formatBDT(product.pricePerKg * defaultWeight.multiplier)}
+              {t("common.from")} {formatBDT(product.pricePerKg * defaultWeight.multiplier)}
             </div>
           </div>
           <button
@@ -99,7 +103,7 @@ export default function ProductCard({ product }) {
             disabled={!inStock}
             className={`btn-primary text-sm py-1.5 px-3 ${!inStock ? "opacity-50 cursor-not-allowed" : ""}`}
           >
-            {inStock ? "+ Add" : "Sold out"}
+            {inStock ? t("common.add") : t("common.soldOut")}
           </button>
         </div>
       </div>

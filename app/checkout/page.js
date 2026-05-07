@@ -5,11 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { useCart, formatBDT } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
+import { useLang } from "@/context/LanguageContext";
 import { applyCoupon } from "@/lib/coupons";
 
 export default function CheckoutPage() {
   const { lines, subtotal, clear } = useCart();
   const { placeOrder, user } = useAuth();
+  const { t } = useLang();
   const [method, setMethod] = useState("cod");
   const [placed, setPlaced] = useState(null);
   const [couponInput, setCouponInput] = useState("");
@@ -64,18 +66,16 @@ export default function CheckoutPage() {
     return (
       <div className="container-page py-20 max-w-xl text-center">
         <div className="text-6xl mb-4">🐟</div>
-        <h1 className="section-title">Order confirmed!</h1>
+        <h1 className="section-title">{t("checkout.orderConfirmed")}</h1>
         <p className="mt-3 text-brand-deep/75">
-          Thank you, <b>{placed.name}</b>. Your order
-          <span className="mx-1 px-2 py-0.5 bg-brand-mint/15 text-brand-teal rounded font-mono text-sm">{placed.id}</span>
-          has been placed for <b>{formatBDT(placed.total)}</b>.
+          {t("checkout.thankYou")} <b>{placed.name}</b>.{" "}
+          <span className="mx-1 px-2 py-0.5 bg-brand-mint/15 text-brand-teal rounded font-mono text-sm">{placed.id}</span>{" "}
+          {t("checkout.hasBeenPlaced")} <b>{formatBDT(placed.total)}</b>।
         </p>
         <p className="mt-2 text-sm text-brand-deep/60">
-          {placed.method === "cod"
-            ? "We'll call to confirm. Pay cash to the rider on delivery."
-            : `Please complete payment to our ${placed.method === "bkash" ? "bKash" : "Nagad"} merchant number — we'll send a payment SMS shortly.`}
+          {placed.method === "cod" ? t("checkout.codFollowup") : t("checkout.mfsFollowup")}
         </p>
-        <Link href="/" className="btn-primary mt-8">Back to home</Link>
+        <Link href="/" className="btn-primary mt-8">{t("common.backToHome")}</Link>
       </div>
     );
   }
@@ -83,50 +83,50 @@ export default function CheckoutPage() {
   if (lines.length === 0) {
     return (
       <div className="container-page py-20 text-center">
-        <p className="text-brand-deep/65 mb-5">Your basket is empty — nothing to checkout.</p>
-        <Link href="/shop" className="btn-primary">Browse the catch</Link>
+        <p className="text-brand-deep/65 mb-5">{t("checkout.empty")}</p>
+        <Link href="/shop" className="btn-primary">{t("cart.browse")}</Link>
       </div>
     );
   }
 
   return (
     <div className="container-page py-6 lg:py-10">
-      <h1 className="section-title mb-1">Checkout</h1>
-      <p className="text-sm text-brand-deep/60 mb-6 lg:mb-8">One-page, fast — your fish is waiting.</p>
+      <h1 className="section-title mb-1">{t("checkout.title")}</h1>
+      <p className="text-sm text-brand-deep/60 mb-6 lg:mb-8">{t("checkout.sub")}</p>
 
       <form onSubmit={onPlaceOrder} className="grid lg:grid-cols-[1fr_400px] gap-10">
         <div className="space-y-7">
-          <Section title="Contact">
+          <Section title={t("checkout.contact")}>
             <div className="grid sm:grid-cols-2 gap-3">
-              <Field name="name" label="Full name" required defaultValue={user?.name || ""} />
-              <Field name="phone" label="Phone (BD)" required placeholder="01XXXXXXXXX" defaultValue={user?.phone || ""} />
+              <Field name="name" label={t("checkout.fullName")} required defaultValue={user?.name || ""} />
+              <Field name="phone" label={t("checkout.phone")} required placeholder="01XXXXXXXXX" defaultValue={user?.phone || ""} />
               <div className="sm:col-span-2">
-                <Field name="email" type="email" label="Email (optional)" defaultValue={user?.email || ""} />
+                <Field name="email" type="email" label={t("checkout.email")} defaultValue={user?.email || ""} />
               </div>
             </div>
           </Section>
 
-          <Section title="Delivery address">
+          <Section title={t("checkout.address")}>
             <SavedAddresses />
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="sm:col-span-2">
-                <Field name="address" label="House / Road / Area" required defaultValue={defaultAddr?.address || ""} />
+                <Field name="address" label={t("checkout.addressLine")} required defaultValue={defaultAddr?.address || ""} />
               </div>
-              <Field name="city" label="City" required defaultValue={defaultAddr?.city || "Dhaka"} />
-              <Field name="zone" label="Thana / Zone" required defaultValue={defaultAddr?.zone || ""} />
+              <Field name="city" label={t("checkout.city")} required defaultValue={defaultAddr?.city || "Dhaka"} />
+              <Field name="zone" label={t("checkout.zone")} required defaultValue={defaultAddr?.zone || ""} />
               <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-brand-teal mb-1">Delivery instructions</label>
-                <textarea name="notes" rows={2} className="input" placeholder="Apartment, gate code, when to call..." />
+                <label className="block text-xs font-semibold uppercase tracking-wider text-brand-teal mb-1">{t("checkout.instructions")}</label>
+                <textarea name="notes" rows={2} className="input" placeholder={t("checkout.instructionsPh")} />
               </div>
             </div>
           </Section>
 
-          <Section title="Payment">
+          <Section title={t("checkout.payment")}>
             <div className="grid sm:grid-cols-3 gap-3">
               {[
-                { id: "cod",   title: "Cash on Delivery",   sub: "Pay cash to rider"     },
-                { id: "bkash", title: "bKash",              sub: "Personal / Merchant"   },
-                { id: "nagad", title: "Nagad",              sub: "Personal / Merchant"   },
+                { id: "cod",   title: t("checkout.cod"),   sub: t("checkout.codSub")   },
+                { id: "bkash", title: t("checkout.bkash"), sub: t("checkout.bkashSub") },
+                { id: "nagad", title: t("checkout.nagad"), sub: t("checkout.nagadSub") },
               ].map((m) => (
                 <label
                   key={m.id}
@@ -149,17 +149,16 @@ export default function CheckoutPage() {
             </div>
             {method !== "cod" && (
               <div className="mt-3 p-3 rounded-xl bg-brand-sand text-xs text-brand-deep/75">
-                Send the total to our {method === "bkash" ? "bKash" : "Nagad"} number
-                <b className="mx-1">01700-000000</b>
-                and enter the transaction ID below.
-                <input name="txnId" className="input mt-2" placeholder="Transaction ID" />
+                {t("checkout.mobileHelp").replace("%s", method === "bkash" ? t("checkout.bkash") : t("checkout.nagad"))}
+                <b className="mx-1">01700-000000</b>।
+                <input name="txnId" className="input mt-2" placeholder={t("checkout.txnId")} />
               </div>
             )}
           </Section>
         </div>
 
         <aside className="card p-6 h-fit lg:sticky lg:top-28">
-          <h3 className="font-display text-2xl mb-4">Your order</h3>
+          <h3 className="font-display text-2xl mb-4">{t("checkout.yourOrder")}</h3>
           <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
             {lines.map((l) => (
               <div key={l.key} className="flex gap-3 items-center">
@@ -175,20 +174,20 @@ export default function CheckoutPage() {
             ))}
           </div>
           <div className="border-t border-brand-deep/10 mt-4 pt-3 space-y-1.5 text-sm">
-            <div className="flex justify-between text-brand-deep/80"><span>Subtotal</span><span>{formatBDT(subtotal)}</span></div>
+            <div className="flex justify-between text-brand-deep/80"><span>{t("common.subtotal")}</span><span>{formatBDT(subtotal)}</span></div>
             {discount > 0 && (
               <div className="flex justify-between text-brand-teal">
-                <span>Discount ({coupon.coupon.code})</span><span>−{formatBDT(discount)}</span>
+                <span>{t("common.discount")} ({coupon.coupon.code})</span><span>−{formatBDT(discount)}</span>
               </div>
             )}
-            <div className="flex justify-between text-brand-deep/80"><span>Delivery</span><span>{delivery === 0 ? "Free" : formatBDT(delivery)}</span></div>
+            <div className="flex justify-between text-brand-deep/80"><span>{t("common.delivery")}</span><span>{delivery === 0 ? t("common.free") : formatBDT(delivery)}</span></div>
             <div className="flex justify-between text-lg font-semibold pt-2 border-t border-brand-deep/10">
-              <span>Total</span><span>{formatBDT(total)}</span>
+              <span>{t("common.total")}</span><span>{formatBDT(total)}</span>
             </div>
           </div>
 
           <div className="mt-4 pt-3 border-t border-brand-deep/10">
-            <div className="text-xs font-semibold uppercase tracking-wider text-brand-teal mb-2">Promo code</div>
+            <div className="text-xs font-semibold uppercase tracking-wider text-brand-teal mb-2">{t("checkout.promoCode")}</div>
             {coupon ? (
               <div className="flex items-center justify-between bg-brand-mint/10 rounded-xl px-3 py-2">
                 <div>
@@ -196,7 +195,7 @@ export default function CheckoutPage() {
                   <div className="text-[11px] text-brand-deep/65">{coupon.coupon.description}</div>
                 </div>
                 <button type="button" onClick={removeCoupon} className="text-xs text-brand-deep/55 hover:text-accent-coral">
-                  Remove
+                  {t("common.remove")}
                 </button>
               </div>
             ) : (
@@ -206,22 +205,22 @@ export default function CheckoutPage() {
                     value={couponInput}
                     onChange={(e) => setCouponInput(e.target.value)}
                     className="input flex-1 uppercase"
-                    placeholder="e.g. FRESH10"
+                    placeholder="FRESH10"
                   />
                   <button type="button" onClick={tryApplyCoupon} className="btn-ghost py-2 px-4 text-sm">
-                    Apply
+                    {t("common.apply")}
                   </button>
                 </div>
                 {couponError && <div className="text-[11px] text-rose-600 mt-1">{couponError}</div>}
-                <div className="text-[11px] text-brand-deep/55 mt-1">Try: FRESH10, NEWUSER15, FAMILY150</div>
+                <div className="text-[11px] text-brand-deep/55 mt-1">{t("checkout.promoTry")}</div>
               </>
             )}
           </div>
           <button type="submit" className="btn-primary w-full mt-5">
-            Place order · {formatBDT(total)}
+            {t("checkout.placeOrder")} · {formatBDT(total)}
           </button>
           <p className="text-[11px] text-brand-deep/55 mt-3 text-center">
-            By placing this order you agree to CleanCutFish freshness guarantee.
+            {t("checkout.agreement")}
           </p>
         </aside>
       </form>

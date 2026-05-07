@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,9 +10,11 @@ import {
 } from "@/lib/products";
 import ProductCard from "@/components/ProductCard";
 import TrustBadges from "@/components/TrustBadges";
+import { useLang } from "@/context/LanguageContext";
 import { IconStar, IconChevronRight } from "@/components/Icon";
 
 export default function HomePage() {
+  const { t, isBn } = useLang();
   const categories = getAllCategories();
   const ready = getReadyToCook().slice(0, 8);
   const best = getBestsellers();
@@ -22,25 +26,26 @@ export default function HomePage() {
       <section className="relative overflow-hidden">
         <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-10 py-8 sm:py-12 lg:py-20 items-center">
           <div>
-            <span className="section-eyebrow">মাছে-ভাতে বাঙালি · River → Kitchen</span>
+            <span className="section-eyebrow">{t("hero.eyebrow")}</span>
             <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl text-brand-deep leading-[1.05]">
-              The freshest fish in <span className="wave-underline">Bangladesh</span>.
-              Already cleaned, cut, and ready.
+              {isBn ? (
+                <>{t("hero.title1")} <span className="wave-underline">{t("hero.title2")}</span>। {t("hero.title3")}</>
+              ) : (
+                <>{t("hero.title1")} <span className="wave-underline">{t("hero.title2")}</span>. {t("hero.title3")}</>
+              )}
             </h1>
             <p className="mt-4 sm:mt-5 text-brand-deep/75 max-w-lg text-sm sm:text-base">
-              We source every morning from fishermen in Kishoreganj, Chandpur, the
-              Sundarbans and the Haors. Our team cleans, cuts, and vacuum seals the
-              catch within four hours — so dinner is one pouch away.
+              {t("hero.sub")}
             </p>
             <div className="mt-6 sm:mt-7 flex flex-wrap gap-3">
-              <Link href="/shop" className="btn-primary">Shop the catch</Link>
-              <Link href="/combos" className="btn-ghost">Combo packs →</Link>
+              <Link href="/shop" className="btn-primary">{t("hero.cta1")}</Link>
+              <Link href="/combos" className="btn-ghost">{t("hero.cta2")}</Link>
             </div>
             <div className="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-5 text-sm text-brand-deep/70">
               <div className="flex items-center gap-0.5 text-accent-gold">
                 <IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/>
               </div>
-              <span><b className="text-brand-deep">4.9/5</b> from 1,200+ Dhaka households</span>
+              <span><b className="text-brand-deep">{isBn ? "৪.৯/৫" : "4.9/5"}</b> {t("hero.rating")}</span>
             </div>
           </div>
 
@@ -59,14 +64,14 @@ export default function HomePage() {
             <FloatingCard
               className="-left-4 top-12 hidden sm:block"
               icon="🌊"
-              title="Padmar Ilish"
-              sub="Caught 06:14 AM · Chandpur"
+              title={t("hero.floatPadma.title")}
+              sub={t("hero.floatPadma.sub")}
             />
             <FloatingCard
               className="-right-4 bottom-12 hidden sm:block"
               icon="✓"
-              title="Vacuum sealed"
-              sub="Within 4 hours of catch"
+              title={t("hero.floatVacuum.title")}
+              sub={t("hero.floatVacuum.sub")}
             />
           </div>
         </div>
@@ -81,11 +86,11 @@ export default function HomePage() {
       <section className="container-page py-12">
         <div className="flex items-end justify-between mb-7">
           <div>
-            <span className="section-eyebrow">Browse by type</span>
-            <h2 className="section-title mt-1">Featured Categories</h2>
+            <span className="section-eyebrow">{t("home.categoriesEyebrow")}</span>
+            <h2 className="section-title mt-1">{t("home.categoriesTitle")}</h2>
           </div>
           <Link href="/shop" className="hidden sm:inline text-sm text-brand-teal hover:underline">
-            View all →
+            {t("home.viewAll")}
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -99,8 +104,8 @@ export default function HomePage() {
                 <Image src={c.image} alt={c.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width:1024px) 50vw, 20vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/80 via-transparent" />
                 <div className="absolute bottom-0 inset-x-0 p-4 text-white">
-                  <div className="text-xs opacity-80">{c.nameBn}</div>
-                  <div className="font-display text-xl">{c.name}</div>
+                  <div className="text-xs opacity-80">{isBn ? c.name : c.nameBn}</div>
+                  <div className="font-display text-xl">{isBn && c.nameBn ? c.nameBn : c.name}</div>
                   <div className="text-[11px] opacity-80 mt-0.5">{c.blurb}</div>
                 </div>
               </div>
@@ -113,14 +118,14 @@ export default function HomePage() {
       <section className="container-page py-12">
         <div className="flex items-end justify-between mb-7">
           <div>
-            <span className="section-eyebrow">No prep, no mess</span>
-            <h2 className="section-title mt-1">Ready to Cook</h2>
+            <span className="section-eyebrow">{t("home.readyEyebrow")}</span>
+            <h2 className="section-title mt-1">{t("home.readyTitle")}</h2>
             <p className="text-sm text-brand-deep/65 mt-1">
-              Scaled, gutted, sliced into kitchen-ready pieces, vacuum sealed cold.
+              {t("home.readySub")}
             </p>
           </div>
           <Link href="/shop" className="hidden sm:inline text-sm text-brand-teal hover:underline">
-            See all →
+            {t("home.seeAll")}
           </Link>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -134,20 +139,20 @@ export default function HomePage() {
       <section className="bg-brand-deep text-brand-cream py-16 mt-12">
         <div className="container-page grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="section-eyebrow text-brand-mint">Our process</span>
-            <h2 className="font-display text-4xl mt-2">From the river to your fridge — in under 12 hours.</h2>
+            <span className="section-eyebrow text-brand-mint">{t("home.processEyebrow")}</span>
+            <h2 className="font-display text-3xl sm:text-4xl mt-2">{t("home.processTitle")}</h2>
             <ol className="mt-6 space-y-4 text-brand-cream/90">
               {[
-                ["1", "Sourced before sunrise", "Local fishermen in Chandpur, Kishoreganj, Sunamganj and Khulna deliver the morning catch to our regional centers."],
-                ["2", "Cleaned by hand", "Each fish is scaled, gutted, gilled and chill-rinsed in food-grade water. No shortcuts. No chemicals."],
-                ["3", "Cut to your kitchen", "Sliced into the pieces real Bangladeshi cooking calls for — paturi cuts, kalia steaks, or whole."],
-                ["4", "Vacuum sealed cold", "Pouched in food-grade vacuum bags, packed on ice, and sent on cold-chain to your door."],
-              ].map(([n, t, s]) => (
+                [isBn ? "১" : "1", t("home.step1Title"), t("home.step1Body")],
+                [isBn ? "২" : "2", t("home.step2Title"), t("home.step2Body")],
+                [isBn ? "৩" : "3", t("home.step3Title"), t("home.step3Body")],
+                [isBn ? "৪" : "4", t("home.step4Title"), t("home.step4Body")],
+              ].map(([n, title, body]) => (
                 <li key={n} className="flex gap-4">
                   <span className="grid place-items-center w-9 h-9 rounded-full bg-brand-mint text-brand-deep font-bold shrink-0">{n}</span>
                   <div>
-                    <div className="font-semibold">{t}</div>
-                    <div className="text-sm text-brand-cream/75">{s}</div>
+                    <div className="font-semibold">{title}</div>
+                    <div className="text-sm text-brand-cream/75">{body}</div>
                   </div>
                 </li>
               ))}
@@ -169,14 +174,13 @@ export default function HomePage() {
       <section className="container-page py-16">
         <div className="rounded-3xl bg-gradient-to-br from-brand-teal to-brand-deep text-white p-8 lg:p-12 grid lg:grid-cols-2 gap-8 items-center overflow-hidden relative">
           <div>
-            <span className="section-eyebrow text-brand-mint">Family Packages</span>
-            <h2 className="font-display text-4xl mt-2 mb-4">A week of dinners, in one box.</h2>
+            <span className="section-eyebrow text-brand-mint">{t("home.comboEyebrow")}</span>
+            <h2 className="font-display text-3xl sm:text-4xl mt-2 mb-4">{t("home.comboTitle")}</h2>
             <p className="text-brand-cream/85 mb-6 max-w-md">
-              Hand-picked fish combos that mix big-river favourites with small-fish
-              classics — at up to <b className="text-accent-gold">15% off</b>.
+              {t("home.comboSub")}
             </p>
             <Link href="/combos" className="btn-accent">
-              Browse combo packs <IconChevronRight className="ml-1" />
+              {t("home.comboCta")} <IconChevronRight className="ml-1" />
             </Link>
           </div>
           <div className="grid grid-cols-3 gap-3">
@@ -192,8 +196,8 @@ export default function HomePage() {
       {/* TESTIMONIALS */}
       <section className="container-page py-12">
         <div className="text-center mb-10">
-          <span className="section-eyebrow">Loved by</span>
-          <h2 className="section-title mt-1">Customers across Dhaka</h2>
+          <span className="section-eyebrow">{t("home.reviewsEyebrow")}</span>
+          <h2 className="section-title mt-1">{t("home.reviewsTitle")}</h2>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {testimonials.map((t) => (

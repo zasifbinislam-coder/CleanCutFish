@@ -22,8 +22,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "Segoe UI", "Roboto", "sans-serif"],
-        display: ["'Playfair Display'", "Georgia", "serif"],
+        sans: ["'Hind Siliguri'", "Inter", "system-ui", "Segoe UI", "Roboto", "sans-serif"],
+        display: ["'Tiro Bangla'", "'Playfair Display'", "Georgia", "serif"],
       },
       boxShadow: {
         soft: "0 6px 24px -8px rgba(11, 61, 92, 0.18)",
