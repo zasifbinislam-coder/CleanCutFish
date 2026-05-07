@@ -90,9 +90,9 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="container-page py-10">
+    <div className="container-page py-6 lg:py-10">
       <h1 className="section-title mb-1">Checkout</h1>
-      <p className="text-sm text-brand-deep/60 mb-8">One-page, fast — your fish is waiting.</p>
+      <p className="text-sm text-brand-deep/60 mb-6 lg:mb-8">One-page, fast — your fish is waiting.</p>
 
       <form onSubmit={onPlaceOrder} className="grid lg:grid-cols-[1fr_400px] gap-10">
         <div className="space-y-7">

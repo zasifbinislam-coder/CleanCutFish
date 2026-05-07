@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { formatBDT } from "@/context/CartContext";
 import { getAllProducts } from "@/lib/products";
+import { RevenueLine, StatusDonut, TopProducts } from "@/components/AdminCharts";
 
 export default function AdminDashboard() {
   const { orders, users } = useAuth();
@@ -31,6 +32,13 @@ export default function AdminDashboard() {
             <div className="text-xs opacity-80 mt-1">{s.sub}</div>
           </div>
         ))}
+      </div>
+
+      <RevenueLine orders={orders} days={30} />
+
+      <div className="grid lg:grid-cols-2 gap-4">
+        <StatusDonut orders={orders} />
+        <TopProducts orders={orders} />
       </div>
 
       <div className="card p-5">

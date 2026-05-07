@@ -20,25 +20,25 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
-        <div className="container-page grid lg:grid-cols-2 gap-10 py-12 lg:py-20 items-center">
+        <div className="container-page grid lg:grid-cols-2 gap-8 lg:gap-10 py-8 sm:py-12 lg:py-20 items-center">
           <div>
             <span className="section-eyebrow">মাছে-ভাতে বাঙালি · River → Kitchen</span>
-            <h1 className="mt-4 text-5xl sm:text-6xl text-brand-deep leading-[1.05]">
+            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl text-brand-deep leading-[1.05]">
               The freshest fish in <span className="wave-underline">Bangladesh</span>.
               Already cleaned, cut, and ready.
             </h1>
-            <p className="mt-5 text-brand-deep/75 max-w-lg">
+            <p className="mt-4 sm:mt-5 text-brand-deep/75 max-w-lg text-sm sm:text-base">
               We source every morning from fishermen in Kishoreganj, Chandpur, the
               Sundarbans and the Haors. Our team cleans, cuts, and vacuum seals the
               catch within four hours — so dinner is one pouch away.
             </p>
-            <div className="mt-7 flex gap-3">
+            <div className="mt-6 sm:mt-7 flex flex-wrap gap-3">
               <Link href="/shop" className="btn-primary">Shop the catch</Link>
-              <Link href="/combos" className="btn-ghost">View combo packs →</Link>
+              <Link href="/combos" className="btn-ghost">Combo packs →</Link>
             </div>
-            <div className="mt-8 flex items-center gap-5 text-sm text-brand-deep/70">
-              <div className="flex items-center gap-1 text-accent-gold">
-                <IconStar /><IconStar /><IconStar /><IconStar /><IconStar />
+            <div className="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-5 text-sm text-brand-deep/70">
+              <div className="flex items-center gap-0.5 text-accent-gold">
+                <IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/>
               </div>
               <span><b className="text-brand-deep">4.9/5</b> from 1,200+ Dhaka households</span>
             </div>

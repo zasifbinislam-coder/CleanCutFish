@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useCart, formatBDT } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
 import ProductCard from "@/components/ProductCard";
+import Reviews from "@/components/Reviews";
 import {
   IconStar,
   IconPin,
@@ -68,15 +69,15 @@ export default function ProductDetail({ product, related }) {
   }
 
   return (
-    <div className="container-page py-8 lg:py-12">
-      <nav className="text-xs text-brand-deep/55 mb-6">
+    <div className="container-page py-6 lg:py-12 pb-24 lg:pb-12">
+      <nav className="text-xs text-brand-deep/55 mb-5 flex flex-wrap gap-x-2">
         <Link href="/" className="hover:text-brand-teal">Home</Link>
-        <span className="mx-2">/</span>
+        <span>/</span>
         <Link href="/shop" className="hover:text-brand-teal">Shop</Link>
-        <span className="mx-2">/</span>
+        <span>/</span>
         <Link href={`/shop?cat=${product.category}`} className="hover:text-brand-teal">{product.categoryLabel}</Link>
-        <span className="mx-2">/</span>
-        <span className="text-brand-deep/80">{product.name}</span>
+        <span>/</span>
+        <span className="text-brand-deep/80 truncate">{product.name}</span>
       </nav>
 
       <div className="grid lg:grid-cols-2 gap-10">
@@ -144,7 +145,7 @@ export default function ProductDetail({ product, related }) {
             <span>·</span>
             <span>{product.river}</span>
           </div>
-          <h1 className="mt-2 font-display text-4xl text-brand-deep">{product.name}</h1>
+          <h1 className="mt-2 font-display text-3xl sm:text-4xl text-brand-deep leading-tight">{product.name}</h1>
           <p className="text-brand-deep/60">{product.nameBn}</p>
           <div className="mt-3 flex items-center gap-3">
             <div className="flex gap-0.5 text-accent-gold">
@@ -237,6 +238,8 @@ export default function ProductDetail({ product, related }) {
         </div>
       </div>
 
+      <Reviews productId={product.id} />
+
       {related.length > 0 && (
         <section className="mt-20">
           <h2 className="section-title mb-6">You might also love</h2>
@@ -245,6 +248,34 @@ export default function ProductDetail({ product, related }) {
           </div>
         </section>
       )}
+
+      {/* Mobile sticky bottom CTA */}
+      <div className="lg:hidden fixed bottom-0 inset-x-0 bg-white border-t border-brand-deep/10 px-4 py-3 z-30 shadow-[0_-4px_24px_-8px_rgba(11,61,92,0.18)]">
+        <div className="flex items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <div className="text-[11px] text-brand-deep/55 truncate">{weight.label} · {product.region}</div>
+            <div className="font-display text-xl text-brand-deep">{formatBDT(unitPrice * qty)}</div>
+          </div>
+          <button
+            onClick={() => toggle(product.id)}
+            aria-label={wished ? "Remove from wishlist" : "Save to wishlist"}
+            className={`grid place-items-center w-11 h-11 rounded-full border transition shrink-0 ${
+              wished
+                ? "bg-accent-coral text-white border-accent-coral"
+                : "border-brand-deep/15 text-brand-deep"
+            }`}
+          >
+            <IconHeart filled={wished} width={20} height={20} />
+          </button>
+          <button
+            onClick={handleAdd}
+            disabled={!inStock}
+            className={`btn-primary flex-1 ${!inStock ? "opacity-50" : ""}`}
+          >
+            {inStock ? "+ Add to basket" : "Sold out"}
+          </button>
+        </div>
+      </div>
 
       {lightbox && (
         <div

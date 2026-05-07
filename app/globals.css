@@ -15,7 +15,8 @@
 @layer components {
   .btn {
     @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 font-medium transition
-           focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal/60;
+           focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal/60
+           min-h-[42px] whitespace-nowrap;
   }
   .btn-primary {
     @apply btn bg-accent-coral text-white hover:bg-accent-deep active:scale-[0.98] shadow-soft;
@@ -44,7 +45,7 @@
            focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20;
   }
   .section-title {
-    @apply font-display text-3xl sm:text-4xl text-brand-deep;
+    @apply font-display text-2xl sm:text-3xl lg:text-4xl text-brand-deep;
   }
   .section-eyebrow {
     @apply text-xs uppercase tracking-[0.18em] text-brand-teal font-semibold;

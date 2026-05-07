@@ -11,7 +11,7 @@ export default function CartPage() {
   const total = subtotal + delivery;
 
   return (
-    <div className="container-page py-12">
+    <div className="container-page py-8 lg:py-12">
       <h1 className="section-title mb-6">Your basket</h1>
 
       {lines.length === 0 ? (
@@ -24,28 +24,28 @@ export default function CartPage() {
         <div className="grid lg:grid-cols-[1fr_360px] gap-8">
           <div className="space-y-3">
             {lines.map((l) => (
-              <div key={l.key} className="card p-4 flex gap-4">
-                <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-brand-sand shrink-0">
+              <div key={l.key} className="card p-3 sm:p-4 flex gap-3 sm:gap-4">
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-brand-sand shrink-0">
                   <Image src={l.image} alt={l.name} fill sizes="96px" className="object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="font-display text-lg text-brand-deep">{l.name}</div>
+                  <div className="font-display text-base sm:text-lg text-brand-deep leading-tight">{l.name}</div>
                   <div className="text-xs text-brand-deep/60">{l.weightLabel} · {l.region}</div>
-                  <div className="text-sm text-brand-deep/70 mt-1">
-                    {formatBDT(l.unitPrice)} per pouch
+                  <div className="text-xs sm:text-sm text-brand-deep/70 mt-1">
+                    {formatBDT(l.unitPrice)} <span className="text-brand-deep/55">per pouch</span>
+                  </div>
+                  <div className="mt-2 flex items-center gap-3">
+                    <div className="inline-flex items-center border border-brand-deep/15 rounded-full">
+                      <button onClick={() => updateQty(l.key, l.qty - 1)} className="p-1.5"><IconMinus width={14} height={14} /></button>
+                      <span className="w-8 text-center text-sm">{l.qty}</span>
+                      <button onClick={() => updateQty(l.key, l.qty + 1)} className="p-1.5"><IconPlus width={14} height={14} /></button>
+                    </div>
+                    <div className="font-semibold text-brand-deep ml-auto">{formatBDT(l.unitPrice * l.qty)}</div>
                   </div>
                 </div>
-                <div className="flex flex-col items-end justify-between">
-                  <button onClick={() => removeItem(l.key)} className="text-brand-deep/40 hover:text-accent-coral">
-                    <IconClose width={18} height={18} />
-                  </button>
-                  <div className="inline-flex items-center border border-brand-deep/15 rounded-full">
-                    <button onClick={() => updateQty(l.key, l.qty - 1)} className="p-1.5"><IconMinus width={14} height={14} /></button>
-                    <span className="w-8 text-center text-sm">{l.qty}</span>
-                    <button onClick={() => updateQty(l.key, l.qty + 1)} className="p-1.5"><IconPlus width={14} height={14} /></button>
-                  </div>
-                  <div className="font-semibold text-brand-deep">{formatBDT(l.unitPrice * l.qty)}</div>
-                </div>
+                <button onClick={() => removeItem(l.key)} aria-label="Remove" className="text-brand-deep/40 hover:text-accent-coral self-start">
+                  <IconClose width={18} height={18} />
+                </button>
               </div>
             ))}
             <button onClick={clear} className="text-sm text-brand-deep/55 hover:text-accent-coral">

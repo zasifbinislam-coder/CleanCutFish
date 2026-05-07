@@ -45,29 +45,33 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 backdrop-blur bg-white/85 border-b border-brand-deep/10">
-      <div className="bg-brand-deep text-brand-cream text-xs">
-        <div className="container-page flex justify-between py-1.5">
-          <span>৳ Free delivery inside Dhaka over ৳1,500 · Same-day cut, next-day doorstep</span>
-          <span className="hidden sm:inline">Call us · +880 1700-000000</span>
+      <div className="bg-brand-deep text-brand-cream text-[11px] sm:text-xs">
+        <div className="container-page flex justify-between gap-3 py-1.5">
+          <span className="truncate">
+            <span className="hidden sm:inline">৳ </span>
+            Free delivery in Dhaka over ৳1,500
+            <span className="hidden md:inline"> · Same-day cut, next-day doorstep</span>
+          </span>
+          <span className="hidden sm:inline whitespace-nowrap">Call us · +880 1700-000000</span>
         </div>
       </div>
 
-      <div className="container-page flex items-center gap-4 py-3">
-        <Link href="/" className="flex items-center gap-2 group">
+      <div className="container-page flex items-center gap-2 sm:gap-4 py-3">
+        <Link href="/" className="flex items-center gap-2 group shrink-0">
           <Logo />
           <div className="leading-tight">
-            <div className="font-display text-xl text-brand-deep group-hover:text-brand-teal transition">
+            <div className="font-display text-lg sm:text-xl text-brand-deep group-hover:text-brand-teal transition">
               CleanCutFish
             </div>
-            <div className="text-[10px] tracking-[0.18em] uppercase text-brand-teal">
+            <div className="hidden sm:block text-[10px] tracking-[0.18em] uppercase text-brand-teal">
               River → Cut → Cooked
             </div>
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-5 ml-6 text-sm text-brand-deep/80">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5 ml-6 text-sm text-brand-deep/80">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className="hover:text-brand-teal transition">
+            <Link key={n.href} href={n.href} className="whitespace-nowrap hover:text-brand-teal transition">
               {n.label}
             </Link>
           ))}
@@ -75,13 +79,13 @@ export default function Header() {
 
         <div className="flex-1" />
 
-        <form onSubmit={submitSearch} className="hidden md:flex items-center bg-brand-sand rounded-full pl-3 pr-1 py-1">
+        <form onSubmit={submitSearch} className="hidden xl:flex items-center bg-brand-sand rounded-full pl-3 pr-1 py-1">
           <IconSearch className="text-brand-deep/60" />
           <input
             value={searchQ}
             onChange={(e) => setSearchQ(e.target.value)}
-            placeholder="Search Ilish, Ayre, Chingri..."
-            className="bg-transparent outline-none px-2 text-sm w-44"
+            placeholder="Search Ilish, Ayre..."
+            className="bg-transparent outline-none px-2 text-sm w-36"
           />
           {searchQ && (
             <button type="submit" className="text-xs px-2 py-0.5 rounded-full bg-brand-teal text-white">
@@ -94,7 +98,7 @@ export default function Header() {
           {user ? (
             <button
               onClick={() => setUserMenu((v) => !v)}
-              className="flex items-center gap-2 rounded-full bg-brand-sand hover:bg-brand-mint/15 px-3 py-1.5 transition"
+              className="flex items-center gap-2 rounded-full bg-brand-sand hover:bg-brand-mint/15 px-3 py-1.5 transition whitespace-nowrap"
               aria-label="Account menu"
             >
               <span className="grid place-items-center w-7 h-7 rounded-full bg-brand-teal text-white text-xs font-bold">
@@ -105,7 +109,7 @@ export default function Header() {
               </span>
             </button>
           ) : (
-            <Link href="/login" className="hidden sm:flex items-center gap-1.5 text-sm text-brand-deep/85 hover:text-brand-teal transition">
+            <Link href="/login" className="hidden sm:flex items-center gap-1.5 text-sm text-brand-deep/85 hover:text-brand-teal transition whitespace-nowrap">
               <IconUser width={18} height={18} />
               Sign in
             </Link>
@@ -138,7 +142,7 @@ export default function Header() {
         <Link
           href="/wishlist"
           aria-label="Wishlist"
-          className="relative hidden sm:grid place-items-center rounded-full bg-white border border-brand-deep/15 text-brand-deep p-2.5 hover:bg-accent-coral hover:text-white hover:border-accent-coral transition"
+          className="relative hidden md:grid place-items-center rounded-full bg-white border border-brand-deep/15 text-brand-deep p-2.5 hover:bg-accent-coral hover:text-white hover:border-accent-coral transition"
         >
           <IconHeart filled={wishCount > 0} />
           {wishCount > 0 && (
@@ -151,7 +155,7 @@ export default function Header() {
         <button
           onClick={toggleMini}
           aria-label="Open cart"
-          className="relative rounded-full bg-brand-deep text-white p-2.5 hover:bg-brand-ocean transition"
+          className="relative rounded-full bg-brand-deep text-white p-2.5 hover:bg-brand-ocean transition shrink-0"
         >
           <IconCart />
           {itemCount > 0 && (
@@ -162,7 +166,7 @@ export default function Header() {
         </button>
 
         <button
-          className="lg:hidden p-2 text-brand-deep"
+          className="lg:hidden p-2 text-brand-deep shrink-0"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -173,6 +177,16 @@ export default function Header() {
       {mobileOpen && (
         <div className="lg:hidden border-t border-brand-deep/10 bg-white">
           <div className="container-page py-3 flex flex-col gap-1">
+            <form onSubmit={submitSearch} className="md:hidden flex items-center bg-brand-sand rounded-full pl-3 pr-1 py-1 mb-2">
+              <IconSearch className="text-brand-deep/60" width={18} height={18}/>
+              <input
+                value={searchQ}
+                onChange={(e) => setSearchQ(e.target.value)}
+                placeholder="Search fish..."
+                className="bg-transparent outline-none px-2 text-sm flex-1"
+              />
+              {searchQ && <button type="submit" className="text-xs px-2 py-0.5 rounded-full bg-brand-teal text-white">Go</button>}
+            </form>
             {NAV.map((n) => (
               <Link
                 key={n.href}
@@ -183,10 +197,16 @@ export default function Header() {
                 {n.label}
               </Link>
             ))}
+            <Link href="/wishlist" onClick={() => setMobileOpen(false)} className="py-2 text-brand-deep/85">
+              ❤ Wishlist {wishCount > 0 && <span className="text-brand-teal">({wishCount})</span>}
+            </Link>
+            <Link href="/faq" onClick={() => setMobileOpen(false)} className="py-2 text-brand-deep/85">FAQ</Link>
+            <Link href="/contact" onClick={() => setMobileOpen(false)} className="py-2 text-brand-deep/85">Contact</Link>
             <div className="border-t border-brand-deep/10 my-2" />
             {user ? (
               <>
                 <Link href="/account" onClick={() => setMobileOpen(false)} className="py-2">My account</Link>
+                <Link href="/account/addresses" onClick={() => setMobileOpen(false)} className="py-2 text-brand-deep/80">📍 Address book</Link>
                 {isAdmin && <Link href="/admin" onClick={() => setMobileOpen(false)} className="py-2 text-accent-coral font-semibold">Admin Panel</Link>}
                 <button onClick={async () => { await signOut(); setMobileOpen(false); }} className="py-2 text-left text-brand-deep/75">Sign out</button>
               </>
