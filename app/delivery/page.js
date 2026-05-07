@@ -40,7 +40,7 @@ export default function DeliveryPage() {
           <a href="mailto:support@cleancutfish.com" className="text-brand-teal underline">
             support@cleancutfish.com
           </a>{" "}
-          or <b>+880 1700-000000</b>.
+          or <b>+880 1920-262202</b>.
         </p>
         <ul className="mt-4 space-y-2 text-sm text-brand-deep/85 list-disc pl-5">
           <li>We replace the item on your next delivery, OR refund the full price.</li>

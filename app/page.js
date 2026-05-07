@@ -52,8 +52,8 @@ export default function HomePage() {
           <div className="relative">
             <div className="relative aspect-square rounded-[2rem] overflow-hidden shadow-soft border border-white">
               <Image
-                src="/photofish/meghna-nodir-rui-.jpg"
-                alt="Fresh Rui from the Meghna river"
+                src="/photofish/padma-ilish.jpeg"
+                alt="Fresh Padmar Ilish"
                 fill
                 priority
                 className="object-cover"

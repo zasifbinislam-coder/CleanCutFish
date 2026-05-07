@@ -21,7 +21,7 @@ const supabase = createClient(url, serviceKey, { auth: { persistSession: false }
 const ADMIN_EMAIL = "admin@cleancutfish.com";
 const ADMIN_PASSWORD = "admin123";
 const ADMIN_NAME = "Site Admin";
-const ADMIN_PHONE = "+880 1700-000000";
+const ADMIN_PHONE = "+880 1920-262202";
 
 console.log(`→ Ensuring admin user ${ADMIN_EMAIL}`);
 

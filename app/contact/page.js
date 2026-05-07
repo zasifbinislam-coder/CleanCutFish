@@ -77,7 +77,7 @@ export default function ContactPage() {
             icon={IconTruck}
             title="Delivery support"
             lines={[
-              "Phone / WhatsApp: +880 1700-000000",
+              "Phone / WhatsApp: +880 1920-262202",
               "support@cleancutfish.com",
               "Open 8 AM – 9 PM (every day)",
             ]}

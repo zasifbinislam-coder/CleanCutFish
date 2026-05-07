@@ -150,7 +150,7 @@ export default function CheckoutPage() {
             {method !== "cod" && (
               <div className="mt-3 p-3 rounded-xl bg-brand-sand text-xs text-brand-deep/75">
                 {t("checkout.mobileHelp").replace("%s", method === "bkash" ? t("checkout.bkash") : t("checkout.nagad"))}
-                <b className="mx-1">01700-000000</b>।
+                <b className="mx-1">01920-262202</b>
                 <input name="txnId" className="input mt-2" placeholder={t("checkout.txnId")} />
               </div>
             )}
