@@ -121,10 +121,14 @@ export function AuthProvider({ children }) {
         password,
       });
       if (error) return { ok: false, error: error.message };
-      // onAuthStateChange handler will hydrate `user`.
+      // Tiny role-only query so the login page can route immediately.
+      // The full hydration (orders, addresses, all-customer fetch for admin)
+      // happens in the background via onAuthStateChange.
       const { data: { session } } = await supabase.auth.getSession();
-      const profile = session?.user ? await fetchProfile(session.user) : null;
-      return { ok: true, user: profile };
+      if (!session?.user) return { ok: true, user: null };
+      const { data: prof } = await supabase
+        .from("profiles").select("role").eq("id", session.user.id).maybeSingle();
+      return { ok: true, user: { role: prof?.role || "customer" } };
     },
 
     async signOut() {

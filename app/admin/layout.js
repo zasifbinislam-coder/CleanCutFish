@@ -38,7 +38,7 @@ export default function AdminLayout({ children }) {
           <div className="flex items-center gap-2 text-sm">
             <span className="text-brand-deep/60">{user.email}</span>
             <Link href="/" className="btn-ghost py-1.5 px-3 text-xs">Back to site</Link>
-            <button onClick={async () => { await signOut(); router.push("/"); }} className="btn-ghost py-1.5 px-3 text-xs">
+            <button onClick={() => { router.replace("/"); signOut(); }} className="btn-ghost py-1.5 px-3 text-xs">
               Sign out
             </button>
           </div>

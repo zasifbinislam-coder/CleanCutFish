@@ -61,12 +61,6 @@ function LoginInner() {
         </p>
       </form>
 
-      <div className="mt-6 card p-4 text-xs text-brand-deep/65">
-        <b className="text-brand-deep">Demo admin:</b> admin@cleancutfish.com / admin123
-        <div className="text-[11px] mt-1 text-brand-deep/55">
-          (Once you've run <code>npm run create-admin</code> from the project folder.)
-        </div>
-      </div>
     </div>
   );
 }

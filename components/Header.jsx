@@ -144,7 +144,7 @@ export default function Header() {
                 </Link>
               )}
               <button
-                onClick={async () => { await signOut(); setUserMenu(false); }}
+                onClick={() => { setUserMenu(false); signOut(); }}
                 className="block w-full text-left px-3 py-2 rounded-lg hover:bg-brand-mint/10 text-brand-deep/75"
               >
                 {t("nav.signOut")}
@@ -222,7 +222,7 @@ export default function Header() {
                 <Link href="/account" onClick={() => setMobileOpen(false)} className="py-2">{t("nav.account")}</Link>
                 <Link href="/account/addresses" onClick={() => setMobileOpen(false)} className="py-2 text-brand-deep/80">📍 {t("nav.addressBook")}</Link>
                 {isAdmin && <Link href="/admin" onClick={() => setMobileOpen(false)} className="py-2 text-accent-coral font-semibold">{t("nav.adminPanel")}</Link>}
-                <button onClick={async () => { await signOut(); setMobileOpen(false); }} className="py-2 text-left text-brand-deep/75">{t("nav.signOut")}</button>
+                <button onClick={() => { setMobileOpen(false); signOut(); }} className="py-2 text-left text-brand-deep/75">{t("nav.signOut")}</button>
               </>
             ) : (
               <>
