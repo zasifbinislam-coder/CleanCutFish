@@ -45,7 +45,7 @@ export default function HomePage() {
               <div className="flex items-center gap-0.5 text-accent-gold">
                 <IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/><IconStar width={14} height={14}/>
               </div>
-              <span><b className="text-brand-deep">4.9/5</b> {t("hero.rating")}</span>
+              <span><b className="text-brand-deep">{isBn ? "৪.৯/৫" : "4.9/5"}</b> {t("hero.rating")}</span>
             </div>
           </div>
 
@@ -143,10 +143,10 @@ export default function HomePage() {
             <h2 className="font-display text-3xl sm:text-4xl mt-2">{t("home.processTitle")}</h2>
             <ol className="mt-6 space-y-4 text-brand-cream/90">
               {[
-                ["1", t("home.step1Title"), t("home.step1Body")],
-                ["2", t("home.step2Title"), t("home.step2Body")],
-                ["3", t("home.step3Title"), t("home.step3Body")],
-                ["4", t("home.step4Title"), t("home.step4Body")],
+                [isBn ? "১" : "1", t("home.step1Title"), t("home.step1Body")],
+                [isBn ? "২" : "2", t("home.step2Title"), t("home.step2Body")],
+                [isBn ? "৩" : "3", t("home.step3Title"), t("home.step3Body")],
+                [isBn ? "৪" : "4", t("home.step4Title"), t("home.step4Body")],
               ].map(([n, title, body]) => (
                 <li key={n} className="flex gap-4">
                   <span className="grid place-items-center w-9 h-9 rounded-full bg-brand-mint text-brand-deep font-bold shrink-0">{n}</span>
