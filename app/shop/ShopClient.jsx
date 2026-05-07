@@ -1,20 +1,25 @@
 "use client";
 
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 
 function ShopInner({ products, categories, regions }) {
   const sp = useSearchParams();
-  const initialCat = sp.get("cat") || "all";
-  const initialQ = sp.get("q") || "";
+  const urlCat = sp.get("cat") || "all";
+  const urlQ = sp.get("q") || "";
 
-  const [cat, setCat] = useState(initialCat);
+  const [cat, setCat] = useState(urlCat);
   const [region, setRegion] = useState("all");
   const [maxPrice, setMaxPrice] = useState(2000);
   const [sort, setSort] = useState("popular");
   const [readyOnly, setReadyOnly] = useState(false);
-  const [query, setQuery] = useState(initialQ);
+  const [query, setQuery] = useState(urlQ);
+
+  // Keep filter state in sync when the query string changes (e.g. clicking
+  // nav links between River Fish / Small Fish / Shutki / search submissions).
+  useEffect(() => { setCat(urlCat); }, [urlCat]);
+  useEffect(() => { setQuery(urlQ); }, [urlQ]);
 
   const filtered = useMemo(() => {
     let list = [...products];
@@ -43,10 +48,14 @@ function ShopInner({ products, categories, regions }) {
       <div className="mb-8">
         <span className="section-eyebrow">Today's catch</span>
         <h1 className="section-title mt-1">
-          {initialQ ? <>Results for &ldquo;{initialQ}&rdquo;</> : "Shop fresh fish"}
+          {urlQ
+            ? <>Results for &ldquo;{urlQ}&rdquo;</>
+            : cat !== "all"
+              ? categories.find((c) => c.id === cat)?.name || "Shop fresh fish"
+              : "Shop fresh fish"}
         </h1>
         <p className="text-sm text-brand-deep/65 mt-1">
-          {initialQ
+          {urlQ
             ? "Adjust your search or filters below."
             : "Filter by river, region, type and price. Every fish vacuum-sealed within 4 hours."}
         </p>
