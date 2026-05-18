@@ -7,11 +7,48 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MiniCart from "@/components/MiniCart";
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://cleancutfish.com.bd";
+
+const SITE_TITLE = "CleanCutFish — River-fresh fish, cleaned, cut, vacuum sealed";
+const SITE_DESC =
+  "Premium fish from rivers, ponds, and coasts of Bangladesh. Scaled, cut and vacuum-packed Ready to Cook. 100% chemical free. Doorstep delivery.";
+
 export const metadata = {
-  title: "CleanCutFish — River-fresh fish, cleaned, cut, vacuum sealed",
-  description:
-    "Premium fish from rivers, ponds, and coasts of Bangladesh. Scaled, cut and vacuum-packed Ready to Cook. 100% chemical free. Doorstep delivery.",
-  metadataBase: new URL("https://cleancutfish.example"),
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: "%s · CleanCutFish" },
+  description: SITE_DESC,
+  keywords: [
+    "fish delivery Bangladesh",
+    "online fish bd",
+    "ilish chandpur",
+    "ruhi katol delivery",
+    "shutki online",
+    "ready to cook fish",
+    "মাছ ডেলিভারি",
+    "অনলাইন মাছ",
+  ],
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "CleanCutFish",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    locale: "bn_BD",
+    alternateLocale: ["en_US"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESC,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  category: "food",
 };
 
 export default function RootLayout({ children }) {

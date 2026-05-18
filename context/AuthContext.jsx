@@ -168,6 +168,31 @@ export function AuthProvider({ children }) {
         created_at: new Date().toISOString(),
       });
       setOrders((curr) => [record, ...curr]);
+      // Fire-and-forget email receipts. Never block the success page on
+      // SMTP — if the email fails the order is still safely in Supabase.
+      fetch("/api/order-placed", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: record.id,
+          name: order.name,
+          email: order.email || null,
+          phone: order.phone,
+          address: order.address,
+          city: order.city,
+          zone: order.zone,
+          notes: order.notes,
+          method: order.method,
+          txnId: order.txnId || null,
+          lines: order.lines,
+          subtotal: order.subtotal,
+          discount: order.discount || 0,
+          delivery: order.delivery || 0,
+          total: order.total,
+        }),
+      }).catch(() => {
+        /* offline / network issue — silent. */
+      });
       return record;
     },
 
