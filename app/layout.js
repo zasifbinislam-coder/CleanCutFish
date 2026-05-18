@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MiniCart from "@/components/MiniCart";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://cleancutfish.com.bd";
@@ -70,6 +71,7 @@ export default function RootLayout({ children }) {
                 <Header />
                 <main className="bg-wave-pattern">{children}</main>
                 <MiniCart />
+                <WhatsAppButton />
                 <Footer />
               </CartProvider>
             </WishlistProvider>
