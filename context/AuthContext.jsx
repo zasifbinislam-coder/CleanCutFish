@@ -199,7 +199,22 @@ export function AuthProvider({ children }) {
     async updateOrderStatus(id, status) {
       if (!supabase) return;
       await supabase.from("orders").update({ status }).eq("id", id);
+      const target = orders.find((o) => o.id === id);
       setOrders((curr) => curr.map((o) => (o.id === id ? { ...o, status } : o)));
+      // Fire-and-forget status email to the customer (only if we have
+      // their email on the order). Never block the admin UI on SMTP.
+      if (target?.email) {
+        fetch("/api/order-status", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            order: { id: target.id, name: target.name, email: target.email },
+            status,
+          }),
+        }).catch(() => {
+          /* network issue — silent */
+        });
+      }
     },
 
     // -- addresses --
